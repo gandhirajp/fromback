@@ -2,7 +2,7 @@ const express = require("express")
 const app = express();
 app.use(express.json())
 
-const cors = require("cors")
+const cors = require("cors") 
 app.use(cors({  
     origin: "*"   
 })) 
@@ -85,7 +85,6 @@ app.put("/user/:id", async function (req, res) {
         let db = connection.db("form")
         let objId = mongodb.ObjectId(req.params.id)
         await db.collection("data").findOneAndUpdate({ _id: objId }, { $set: req.body })
-        //await db.collection("users").updateMany({gender:"female" },{$set:{grade:"A"}}) - this line is saying for who is female that one add for "A" grade.
 
         await connection.close();
         res.json({ message: "User updated " })
